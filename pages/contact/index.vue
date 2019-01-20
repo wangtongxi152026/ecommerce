@@ -57,7 +57,6 @@
                     v => !!v || 'Please, enter your Feedback'
                 ],
                 loading: false,
-                error: '',
                 token: this.$store.getters['auth/token']
             }
         },
@@ -72,12 +71,34 @@
                         replyTo: 'adilosama47@yahoo.com',
                         subject: 'Feedback from: ' + this.name,
                         text: this.feedback,
-                        html: `<p>this.feedback</p>`
+                        html: `<p>${this.feedback}</p>`
                     }, config);
                     this.loading = false
+                    this.$toast.success('Email sent!', {
+                        icon: 'done',
+                        duration: 2000
+                    })
                 } catch(err) {
                     this.loading = false
                     this.error = err
+                    let errMessage;
+                    if(!this.email) {
+                        errMessage = 'Please, enter your email!'
+                    } else if(!this.name) {
+                        errMessage = 'Please, enter your name!'
+                    } else if(!this.feedback) {
+                        errMessage = 'Please, enter your feedback!'
+                    }
+                    this.$toast.error(errMessage || err.message, {
+                        icon: 'error',
+                        duration: 3000,
+                        action: {
+                            text: 'Close',
+                            onClick: (e, toastObject) => {
+                                toastObject.goAway(0);
+                            }
+                        }
+                    })
                 }
             },
             clear() {

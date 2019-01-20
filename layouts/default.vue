@@ -21,6 +21,20 @@
             <v-list-tile-title>Home</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        
+        <v-list-group>
+          <v-list-tile slot='activator'>
+            <v-list-tile-action>
+              <v-icon color='#D50000'>view_list</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-title>Categories</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile active-class="red--text" v-for="(cat, index) in categories" :key="index" :to='"/category/" + cat'>
+            <v-list-tile-content class='ml-3 pl-3'>
+              <v-list-tile-title>{{ cat }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list-group>
 
         <v-list-tile
         v-if="user"
@@ -151,7 +165,10 @@
         clipped: true,
         drawer: false,
         dark: false,
-        title: 'Al-Dokkaan'
+        title: 'Al-Dokkaan',
+        categories: [
+          'Smartphones', 'Desktops', 'Laptops', 'Shirts', 'Pants', 'Shoes'
+        ]
       }
     },
     computed: {

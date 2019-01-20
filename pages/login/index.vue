@@ -69,15 +69,13 @@
         data() {
             return {
                 password: '',
-                passwordErrors: 'Please enter password!',
                 passwordRules: [
-                    v => !!v || 'Password is required'
+                    v => !!v || 'Please enter your password!'
                     // v => (v && v.length >= 8) || 'Password must contain 8 or more characters'
                 ],
                 email: '',
-                emailErrors: 'Please enter email!',
                 emailRules: [
-                    v => !!v || 'E-mail is required',
+                    v => !!v || 'Please enter your username or email!',
                     // v => /.+@.+/.test(v) || 'Not a valid Email!'
                 ],
                 // stayLoggedIn: false,
@@ -86,9 +84,9 @@
         },
         methods: {
             async submit() {
+                this.loading = true
+                this.$toast.show('Logging in...', {icon: 'hourglass_empty', duration: 500})
                 try {
-                        this.loading = true
-                        this.$toast.show('Logging in...', {duration: 500})
                         const response = await strapi.login(this.email, this.password)
                         this.setUser(response.user)
                         this.setToken(response.jwt)

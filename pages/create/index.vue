@@ -136,6 +136,21 @@
                 </v-card-actions>
             </v-card>
         </v-form>
+        <v-dialog
+        v-model="loading"
+        persistent
+        width="300">
+            <v-card>
+                <v-card-text>
+                    Submitting...
+                    <v-progress-linear
+                        indeterminate
+                        color="#D50000"
+                        class="mb-0"
+                    ></v-progress-linear>
+                </v-card-text>
+            </v-card>
+        </v-dialog>
     </v-flex>
 </template>
 

@@ -20,7 +20,7 @@
                     <v-container grid-list-xs>
                         <h1 class='mb-4'>Credibility:</h1>
                         <v-progress-circular
-                        :size="100"
+                        size="100"
                         width="15"
                         max='10'
                         :value="user.rating * 10"
@@ -67,29 +67,29 @@
             user() {
                 return this.$store.getters['auth/user']
             },
-            avatar() {
-                return this.$store.getters['images/avatar'].avatars
-            },
             token() {
                 return this.$store.getters['auth/token']
             }
-        },
-        async fetch({ store }) {
-            store.commit('images/removeAvatar')
-            const response = await strapi.request('post', '/graphql', {
-                data: {
-                    query: `query{
-                        avatars(where: {user: "${store.getters['auth/user']._id}"}){
-                            image{
-                                url
-                            }
-                        }
-                    }`
-                }
-            })
-            store.commit('images/setAvatar', {
-                ...response.data
-            })
+            // avatar() {
+            //     return this.$store.getters['images/avatar'].avatars
+            //
         }
+        // async fetch({ store }) {
+        //     store.commit('images/removeAvatar')
+        //     const response = await strapi.request('post', '/graphql', {
+        //         data: {
+        //             query: `query{
+        //                 avatars(where: {user: "${store.getters['auth/user']._id}"}){
+        //                     image{
+        //                         url
+        //                     }
+        //                 }
+        //             }`
+        //         }
+        //     })
+        //     store.commit('images/setAvatar', {
+        //         ...response.data
+        //     })
+        // }
     }
 </script>

@@ -105,31 +105,18 @@
         data() {
             return {
                 email: '',
-                emailErrors: 'Please enter an email!',
                 emailRules: [
                     v => !!v || 'E-mail is required',
                     v => /.+@.+/.test(v) || 'Not a valid Email!'
                 ],
                 // v => (v && v.length >= 8) || 'Password must contain 8 or more characters'
                 username: '',
-                usernameErrors: 'Please enter a username!',
                 usernameRules: [
-                    v => !!v || 'Username is required.'
-                ],
-                firstName: '',
-                firstNameErrors: 'Please enter your first name!',
-                firstNameRules: [
-                    v => !!v || 'Name is required.'
-                ],
-                lastName: '',
-                lastNameErrors: 'Please enter your last name!',
-                lastNameRules: [
-                    v => !!v || 'Name is required.'
+                    v => !!v || 'Username is required'
                 ],
                 password: '',
-                passwordErrors: 'Please enter a password!',
                 passwordRules: [
-                    v => !!v || 'Password is required.'
+                    v => !!v || 'Password is required'
                 ],
                 termsConsent: false,
                 termsRules: [
