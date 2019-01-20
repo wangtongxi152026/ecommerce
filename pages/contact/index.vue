@@ -1,7 +1,5 @@
 <template>
     <v-flex xs12>
-        <v-alert :value='emailSentSuccess' color='success' icon='check_circle' outline dismissible>E-mail sent successfully!</v-alert>
-        <v-alert :value='emailSentFailure' color='error' icon='warning' outline dismissible>Error! {{ error }}</v-alert>
         <v-card>
             <v-parallax 
             src="https://images.unsplash.com/photo-1544547936-ee21de7a3bb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
@@ -60,8 +58,6 @@
                 ],
                 loading: false,
                 error: '',
-                emailSentSucess: false,
-                emailSentFailure: false,
                 token: this.$store.getters['auth/token']
             }
         },
@@ -79,11 +75,9 @@
                         html: `<p>this.feedback</p>`
                     }, config);
                     this.loading = false
-                    this.emailSentSucess = true
                 } catch(err) {
                     this.loading = false
-                    this.error = err,
-                    this.emailSentFailure = true
+                    this.error = err
                 }
             },
             clear() {
