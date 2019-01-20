@@ -1,6 +1,6 @@
 # client
 
-> frontend for mksd-v1 using strapi backend
+> Frontend
 
 ## Build Setup
 
