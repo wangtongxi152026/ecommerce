@@ -8,7 +8,7 @@
                         <v-avatar
                         size='250'
                         >
-                            <img src="/default_user_img.svg" :alt="user.username">
+                            <img :src="'http://localhost:1337' + avatar.url" :alt="user.username">
                         </v-avatar>
                     </v-badge>
                 </v-flex>
@@ -69,27 +69,28 @@
             },
             token() {
                 return this.$store.getters['auth/token']
+            },
+            avatar() {
+                return this.$store.getters['images/avatar'].user.avatar
             }
-            // avatar() {
-            //     return this.$store.getters['images/avatar'].avatars
-            //
+            
+        },
+        async fetch({ store }) {
+            store.commit('images/removeAvatar')
+            const response = await strapi.request('post', '/graphql', {
+                data: {
+                    query: `query{
+                        user(id: "${store.getters['auth/user']._id}"){
+                            avatar{
+                                url
+                            }
+                        }
+                    }`
+                }
+            })
+            store.commit('images/setAvatar', {
+                ...response.data
+            })
         }
-        // async fetch({ store }) {
-        //     store.commit('images/removeAvatar')
-        //     const response = await strapi.request('post', '/graphql', {
-        //         data: {
-        //             query: `query{
-        //                 avatars(where: {user: "${store.getters['auth/user']._id}"}){
-        //                     image{
-        //                         url
-        //                     }
-        //                 }
-        //             }`
-        //         }
-        //     })
-        //     store.commit('images/setAvatar', {
-        //         ...response.data
-        //     })
-        // }
     }
 </script>

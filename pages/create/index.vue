@@ -106,28 +106,6 @@
                         </v-flex> -->
                     </v-layout>
 
-                    <!-- <v-layout row>
-                        <v-flex xs12 sm6 offset-sm3>
-                            <v-btn raised outline color='#00BCD4' @click='onPickFile'>Upload Image</v-btn>
-                            <input type="file" style='display: none;' ref='fileInput' accept='image/*' @change='onFilePicked'>
-                        </v-flex>
-                    </v-layout>
-                    <v-layout row v-if='imageUrl'>
-                        <v-flex xs12 sm6 offset-sm3>
-                            <v-img :src="imageUrl" :aspect-ratio='16/9'>
-                                <v-layout
-                                    slot="placeholder"
-                                    fill-height
-                                    align-center
-                                    justify-center
-                                    ma-0
-                                >
-                                    <v-progress-circular indeterminate color="#00BCD4"></v-progress-circular>
-                                </v-layout>
-                            </v-img>
-                        </v-flex>
-                    </v-layout> -->
-
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
@@ -255,24 +233,7 @@
                 this.price = '10',
                 this.image = '',
                 this.imageUrl = ''
-            },
-            // onPickFile() {
-            //     this.$refs.fileInput.click()
-            // },
-            // onFilePicked(event) {
-            //     const files = event.target.files
-            //     let filename = files[0].name
-            //     if (filename.lastIndexOf('.') <= 0) {
-            //         return alert('Please add a valid file!');
-            //     }
-            //     const fileReader = new FileReader()
-            //     fileReader.addEventListener('load', () => {
-            //         this.imageUrl = fileReader.result
-            //     })
-            //     fileReader.readAsDataURL(files[0])
-            //     this.image = files[0]
-            //     this.imageName = filename
-            // }
+            }
         }
     }
 </script>

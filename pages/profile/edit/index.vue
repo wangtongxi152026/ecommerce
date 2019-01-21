@@ -1,5 +1,6 @@
 <template>
     <v-layout column align-center justify-center>
+        {{ token }}
         <v-container grid-list-lg fluid>
             <v-card class='mb-5 pa-5' width='100%'>
                 {{ user }}

@@ -66,6 +66,7 @@
                 { hid: 'description', name: 'description', content: 'Login to start Buying & Selling.' }
             ]
         },
+        middleware: ['redirectFromRegister'],
         data() {
             return {
                 password: '',
