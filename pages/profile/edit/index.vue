@@ -1,9 +1,6 @@
 <template>
     <v-layout column align-center justify-center>
         <v-container grid-list-lg fluid>
-            <v-card class='mb-5 pa-5' width='100%'>
-                {{ token }}
-            </v-card>
             <v-card v-if='items.length < 1'>
                 <v-card-title primary-title>
                     <h1>Oops! No items yet :(</h1>
@@ -68,7 +65,6 @@
             return {
                 items: [],
                 err: '',
-                token: this.$store.getters['auth/token'],
             }
         },
 
