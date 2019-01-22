@@ -13,7 +13,7 @@
                     <v-card hover>
                         <v-card-media>
                             <v-img
-                            src='/default_item_img.svg'
+                            :src='"http://localhost:1337" + item.image.url'
                             :aspect-ratio="1.1"
                             class='white'
                             >
@@ -86,6 +86,9 @@
                                 _id
                                 username
                                 userType
+                            }
+                            image{
+                                url
                             }
                         }
                     }`

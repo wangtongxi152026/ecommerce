@@ -48,7 +48,7 @@
                             </v-flex>
                         </v-layout>
                     </v-card>
-                    <v-btn v-if='username && email && password' class='white--text mt-5' color='#D50000' :loading='loading' value='Proceed' aria-label='Press to submit login credentials!' hover ripple type="submit">Proceed</v-btn>
+                    <v-btn v-if='username && email && password' class='white--text mt-5' color='#D50000' large :loading='loading' value='Proceed' aria-label='Press to submit login credentials!' hover ripple type="submit">Proceed</v-btn>
                 </v-form>
             </v-stepper-content>
 
@@ -60,58 +60,58 @@
                 <v-card class="mb-5" flat>
                     <v-radio-group v-model="userType">
                         <v-layout row wrap xs12 sm6>
-                            <v-card hover class='grey lighten-3 mx-3 mt-3' width='200' height='200'>
+                            <v-card hover class='grey lighten-3 mx-3 mt-3' width='200' height='250'>
                                 <v-card-title>
                                     <v-icon class='mr-2' large left>group</v-icon>
-                                    <span class="title font-weight-light">Buyer</span>
+                                    <span class="title font-weight-light">Shopper</span>
                                 </v-card-title>
                                 <v-card-text>
-                                    This account can do this, this and that!
+                                    Buy items from others safely & securely
                                 </v-card-text>
                                 <v-card-actions>
-                                    <v-radio color='#D50000' label="Buyer" value="Buyer"></v-radio>
+                                    <v-radio color='#D50000' label="Shopper" value="Shopper"></v-radio>
                                 </v-card-actions>
                             </v-card>
-                            <v-card hover class='grey lighten-3 mx-3 mt-3' width='200' height='200'>
+                            <v-card hover class='grey lighten-3 mx-3 mt-3' width='200' height='250'>
                                 <v-card-title>
                                     <v-icon class='mr-2' large left>local_atm</v-icon>
-                                    <span class="title font-weight-light">Seller</span>
+                                    <span class="title font-weight-light">Retailer</span>
                                 </v-card-title>
                                 <v-card-text>
-                                    This account can do this, this and that!
+                                    Sell directly to consumers at a limited amount
                                 </v-card-text>
                                 <v-card-actions>
-                                    <v-radio color='#D50000' label="Seller" value="Seller"></v-radio>
+                                    <v-radio color='#D50000' label="Retailer" value="Retailer"></v-radio>
                                 </v-card-actions>
                             </v-card>
-                            <v-card hover class='grey lighten-3 mx-3 mt-3' width='200' height='200'>
+                            <v-card hover class='grey lighten-3 mx-3 mt-3' width='200' height='250'>
                                 <v-card-title>
                                     <v-icon class='mr-2' large left>build</v-icon>
                                     <span class="title font-weight-light">Craftsman</span>
                                 </v-card-title>
                                 <v-card-text>
-                                    This account can do this, this and that!
+                                    Create your own independant brand & product lines
                                 </v-card-text>
                                 <v-card-actions>
                                     <v-radio color='#D50000' label="Craftsman" value="Craftsman"></v-radio>
                                 </v-card-actions>
                             </v-card>
-                            <v-card hover class='grey lighten-3 mx-3 mt-3' width='200' height='200'>
+                            <v-card hover class='grey lighten-3 mx-3 mt-3' width='200' height='250'>
                                 <v-card-title>
                                     <v-icon class='mr-2' large left>store</v-icon>
-                                    <span class="title font-weight-light">Shop</span>
+                                    <span class="title font-weight-light">Wholesaler</span>
                                 </v-card-title>
                                 <v-card-text>
-                                    This account can do this, this and that!
+                                    Sell at large quantities to either consumers or to companies & other retailers 
                                 </v-card-text>
                                 <v-card-actions>
-                                    <v-radio color='#D50000' label="Shop" value="Shop"></v-radio>
+                                    <v-radio color='#D50000' label="Wholesaler" value="Wholesaler"></v-radio>
                                 </v-card-actions>
                             </v-card>
                         </v-layout>
                     </v-radio-group>
                 </v-card>
-                <v-btn class='white--text' color="#D50000" @click="e6 = 3">Proceed</v-btn>
+                <v-btn class='white--text' color="#D50000" large @click="changeUserType">Proceed</v-btn>
             </v-stepper-content>
 
             <v-stepper-step color='#D50000' :complete="e6 > 3" step="3">
@@ -144,10 +144,10 @@
                     </v-card-media>
                     <v-card-actions class='justify-center'>
                         <v-btn class='white--text' raised color='#D50000' @click='onPickFile' v-if='!image'>Select Image</v-btn>
-                        <v-btn class='white--text' raised color='#D50000' @click='clearImage' v-if='image'><v-icon>delete</v-icon></v-btn>
+                        <v-btn class='white--text' raised color='#D50000' @click='clearImage' v-if='image'><v-icon>delete_forever</v-icon></v-btn>
                     </v-card-actions>
                 </v-card>
-                <v-btn class='white--text' color="#D50000" @click="uploadImage" v-if='image'>Proceed</v-btn>
+                <v-btn class='white--text' color="#D50000" large @click="uploadImage" v-if='image'>Proceed</v-btn>
                 <v-btn flat @click='e6 = 2'>Back</v-btn>
             </v-stepper-content>
 
@@ -162,15 +162,16 @@
                 :rules='termsRules'
                 label='Do you agree to the Terms and Conditions?'
                 v-model='termsConsent'></v-checkbox>
-                <v-btn class='white--text' color="#D50000" @click="e6 = 5" v-if='termsConsent'>Proceed</v-btn>
+                <v-btn class='white--text' color="#D50000" large @click="e6 = 5" v-if='termsConsent'>Proceed</v-btn>
                 <v-btn flat @click='e6 = 3'>Back</v-btn>
             </v-stepper-content>
+
             <v-stepper-step color='#D50000' step="5">Congratulations!</v-stepper-step>
             <v-stepper-content step="5">
                 <v-card class="mb-5" height="200px">
                     You are done creating an account, now let's get to buying!
                     <v-card-actions>
-                        <v-btn class='white--text' color='#D50000' to='/profile'>Profile</v-btn>
+                        <v-btn class='white--text' large color='#D50000' to='/profile'>Profile</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-stepper-content>
@@ -214,7 +215,7 @@
                 userType: '',
                 emailRules: [
                     v => !!v || 'E-mail is required',
-                    v => /.+@.+/.test(v) || 'Not a valid Email!'
+                    v => /.+@.+?\.[a-zA-Z]+./.test(v) || 'Not a valid Email!'
                 ],
                 username: '',
                 usernameRules: [
@@ -233,7 +234,8 @@
                 image: '',
                 imageName: '',
                 imageUrl: '',
-                login_res: ''
+                login_res: '',
+                userType: ''
             }
         },
         methods: {
@@ -292,6 +294,34 @@
                     })
                     this.loading = false
                 }
+            },
+            async changeUserType() {
+                try {
+                    this.loading = true
+                    const user_type = this.userType
+                    this.$store.commit('auth/updateUserType', user_type)
+                    // const user_typeResponse = await strapi.request('put', '/users/' + this.login_res.user._id, { headers: {Authorization: `Bearer ${this.login_res.jwt}`}, user_type})
+                    const user_typeResponse = await axios.put('http://localhost:1337/users/' + this.login_res.user._id, { headers: {Authorization: `Bearer ${this.login_res.jwt}`}, userType: user_type})
+                    this.$toast.success('Successfully logged in. Please, finish registration...', 
+                    {
+                        icon: 'lock_open',
+                        duration: 2000
+                    })
+                    this.e6 = 3
+                    this.loading = false
+                } catch(err) {
+                    this.$toast.error(err.message || 'An error occurred.', {
+                        icon: 'error',
+                        action : {
+                            text : 'Close',
+                            onClick : (e, toastObject) => {
+                                toastObject.goAway(0);
+                            }
+                        }
+                    })
+                    this.loading = false
+                }
+
             },
             async uploadImage() {
                 try {

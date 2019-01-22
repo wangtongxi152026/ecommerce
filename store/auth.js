@@ -11,6 +11,9 @@ export const mutations = {
 		state.token =  token
 		Cookies.set('token', token)
 	},
+	updateUserType(state, type) {
+		state.user.userType = type
+	},
 	logout(state) {
 		state.user = null
 		state.token = null

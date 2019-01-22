@@ -1,9 +1,8 @@
 <template>
     <v-layout column align-center justify-center>
-        {{ token }}
         <v-container grid-list-lg fluid>
             <v-card class='mb-5 pa-5' width='100%'>
-                {{ user }}
+                {{ token }}
             </v-card>
             <v-card v-if='items.length < 1'>
                 <v-card-title primary-title>
@@ -17,7 +16,7 @@
                     <v-card hover max-width='500px'>
                         <v-card-media>
                             <v-img
-                            src="/default_item_img.svg"
+                            :src='"http://localhost:1337" + item.image.url'
                             :aspect-ratio="1.1"
                             class='white'
                             >
@@ -103,6 +102,9 @@
                                 price
                                 amount
                                 category
+                                image{
+                                    url
+                                }
                             }
                         }`
                     }
