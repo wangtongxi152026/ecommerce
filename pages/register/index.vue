@@ -151,7 +151,7 @@
                 <v-btn flat @click='e6 = 2'>Back</v-btn>
             </v-stepper-content>
 
-            <v-stepper-step color='#D50000' step="4">
+            <v-stepper-step color='#D50000' :complete="e6 > 4" step="4">
                 Terms & Conditions
                 <small>Must agree!</small>
             </v-stepper-step>

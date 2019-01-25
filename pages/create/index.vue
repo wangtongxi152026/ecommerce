@@ -139,7 +139,7 @@
                 </v-card>
             </v-stepper-content>
             <v-stepper-step color='#D50000' :complete='e5 > 4' step="4">
-                Upload item picture for id: {{ entity_id }}
+                Upload item picture
                 <small>Make sure to take a beautiful shot!</small>
             </v-stepper-step>
             <v-stepper-content step="4">
@@ -176,7 +176,7 @@
             
             <v-stepper-step color='#D50000' step="5">Congratulations!</v-stepper-step>
             <v-stepper-content step="5">
-                <v-card class="mb-5" height="200px">
+                <v-card class="mb-5" flat>
                     You are done creating an item!!
                     <v-card-actions>
                         <v-btn class='white--text' large color='#D50000' :to='"/category/" + subCat'>Check your item!</v-btn>
