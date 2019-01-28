@@ -1,8 +1,7 @@
 <template>
     <v-layout column justify-center align-center>
-        <v-responsive width='100%'>
+        <v-responsive width='100%' id='responsive_header'>
             <v-parallax
-            id='responsive_header'
             dark
             >
                 <v-layout
