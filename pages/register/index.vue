@@ -7,7 +7,7 @@
             </v-stepper-step>
             <v-stepper-content step="1">
                 <v-form ref='form' lazy-validation @submit.stop.prevent='registerUsingCredentials'>
-                    <v-card class="mb-5" flat>
+                    <v-card class="mb-5 pa-5" flat>
                         <v-layout row>
                             <v-flex xs12 sm6 offset-sm3>
                                 <v-text-field
@@ -258,6 +258,7 @@
                 } catch (err) {
                     this.$toast.error(err.message || 'An error occurred.', {
                         icon: 'error',
+                        duration: 5000,
                         action : {
                             text : 'Close',
                             onClick : (e, toastObject) => {
@@ -285,6 +286,7 @@
                 } catch (err) {
                     this.$toast.error(err.message || 'An error occurred.', {
                         icon: 'error',
+                        duration: 5000,
                         action : {
                             text : 'Close',
                             onClick : (e, toastObject) => {
@@ -312,6 +314,7 @@
                 } catch(err) {
                     this.$toast.error(err.message || 'An error occurred.', {
                         icon: 'error',
+                        duration: 5000,
                         action : {
                             text : 'Close',
                             onClick : (e, toastObject) => {
@@ -357,6 +360,7 @@
                 } catch(err) {
                     this.$toast.error(err.message || 'An error occurred.', {
                         icon: 'error',
+                        duration: 5000,
                         action : {
                             text : 'Close',
                             onClick : (e, toastObject) => {
