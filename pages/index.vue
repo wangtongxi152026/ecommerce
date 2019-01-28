@@ -1,11 +1,12 @@
 <template>
     <v-layout column justify-center align-center>
-        <v-responsive width='100%' id='responsive_header'>
-            <v-parallax
+        <v-responsive width='100%' id='responsive_header' height='600'>
+            <!-- <v-parallax
             style='border: none;'
             height='600'
             dark
-            >
+            > -->
+            <v-container class='white--text' style='margin-top: 14rem;'>
                 <v-layout
                 align-center
                 column
@@ -15,7 +16,8 @@
                 <h4 class="subheading">1000 stores in your pocket - Buy & Sell Securely!</h4>
                 <v-btn to='/register' color='#D50000' class='white--text px-5' round red raised ripple large>Begin your journey</v-btn>
                 </v-layout>
-            </v-parallax>
+            </v-container>
+            <!-- </v-parallax> -->
         </v-responsive>
         <!-- <v-responsive width='100%'>
             <v-img
