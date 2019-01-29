@@ -4,7 +4,7 @@
             <v-container grid-list-lg fluid>
                 <v-layout row wrap>
                     <v-flex v-for="(cat, key) in categories" :key="key" xs12 md6 lg4>
-                        <v-card>
+                        <v-card raised hover style='border-radius: 15px;'>
                             <v-responsive>
                                 <v-img
                                 :src='cat.img'
@@ -26,7 +26,7 @@
                                 <h3 class="headline mb-0">{{ cat.name }}</h3>
                             </v-card-title>
                             <v-card-actions>
-                                <v-btn :to="cat.link" color='#D50000' class='white--text' :aria-label="`View all ${cat.name}`" value='Browse' hover block raised>Browse</v-btn>
+                                <v-btn :to="cat.link" style='border-radius: 15px;' color='#D50000' class='white--text' :aria-label="`View all ${cat.name}`" value='Browse' hover block raised>Browse</v-btn>
                             </v-card-actions>
                         </v-card>
                     </v-flex>
