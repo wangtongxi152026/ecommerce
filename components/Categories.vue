@@ -43,32 +43,32 @@ export default {
             categories: [
                 {
                     name: 'Shoes',
-                    img: '/images/categories/shoes.svg',
+                    img: '/images/categories/shoes.webp',
                     link: '/category/Shoes'
                 },
                 {
                     name: 'Shirts',
-                    img: '/images/categories/apparel-top.svg',
+                    img: '/images/categories/apparel-top.webp',
                     link: '/category/Shirts'
                 },
                 {
                     name: 'Pants',
-                    img: '/images/categories/apparel-bottom.svg',
+                    img: '/images/categories/apparel-bottom.webp',
                     link: '/category/Pants'
                 },
                 {
                     name: 'Smartphones',
-                    img: '/images/categories/smartphone.svg',
+                    img: '/images/categories/smartphone.webp',
                     link: '/category/Smartphones'
                 },
                 {
                     name: 'Laptops',
-                    img: '/images/categories/laptop-pc.svg',
+                    img: '/images/categories/laptop-pc.webp',
                     link: '/category/Laptops'
                 },
                 {
                     name: 'Desktops',
-                    img: '/images/categories/desktop-pc.svg',
+                    img: '/images/categories/desktop-pc.webp',
                     link: '/category/Desktops'
                 }
             ]

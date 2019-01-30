@@ -28,7 +28,6 @@
                                 :rules='categoryRules'
                                 color='#D50000'
                                 box
-                                chips
                                 autofocus
                                 hint="Choose a category for the item"
                                 :items="states[state].children"
@@ -53,9 +52,9 @@
             <v-stepper-content step="2">
                 <v-layout row wrap>
                     <v-flex xs12 sm6 md6 lg3 v-for='(pr, index) in products' :key='index'>
-                        <v-card hover class='mx-3' min-width="300">
-                            <v-card-title class='mx-auto' primary-title>
-                                <h2>{{ pr.product_name }}</h2>
+                        <v-card style='border-radius: 15px;' hover class='mx-3 my-3' min-width="300">
+                            <v-card-title class='mx-auto'>
+                                <h3>{{ pr.product_name }}</h3>
                             </v-card-title>
                             <v-card-media
                             contain
@@ -73,10 +72,10 @@
                                 </v-layout> 
                             </v-card-media>
                             <v-card-text>
-                                Created: {{ pr.product_year }}
+                                Release Date: {{ pr.product_year }}
                             </v-card-text>
                             <v-card-actions>
-                                <v-btn class='white--text' block color="#D50000" :loading='loading' @click='selectedItem(pr._id, pr.product_name)'>Select</v-btn>
+                                <v-btn  style='border-radius: 15px;' class='white--text' block color="#D50000" :loading='loading' @click='selectedItem(pr._id, pr.product_name)'>Select</v-btn>
                             </v-card-actions>
                         </v-card> 
                     </v-flex>

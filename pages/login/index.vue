@@ -1,7 +1,7 @@
 <template>
     <v-flex order-xs12>
         <v-form ref='form' @submit.stop.prevent='submit'>
-            <v-card class='pa-5'>
+            <v-card class='py-5 pa-5'>
                 <v-layout row>
                     <v-flex xs12 sm6 offset-sm3>
                         <v-card-title primary-title>
@@ -46,7 +46,9 @@
                                 Register
                             </v-btn>
                         </span>
-                        <v-btn color='#D50000' :loading='loading' class='white--text' aria-label='Press to login!' large block hover ripple value='Login' type="submit">Login</v-btn>
+                        <v-spacer></v-spacer>
+                        <v-btn class='white--text' color='#3b5998' :loading='fbLoading' large hover ripple href='http://localhost:1337/connect/facebook'><v-icon>account_circle</v-icon></v-btn>
+                        <v-btn color='#D50000' :loading='loading' class='white--text' aria-label='Press to login!' large hover ripple value='Login' type="submit">Login</v-btn>
                     </v-flex>
                 </v-layout>
             </v-card>
@@ -58,6 +60,7 @@
     import Strapi from 'strapi-sdk-javascript/build/main'
     const apiUrl = process.env.API_URL || 'http://localhost:1337'
     const strapi = new Strapi(apiUrl)
+    import axios from 'axios'
     import { mapMutations } from 'vuex'
     export default {
         head: {
@@ -80,13 +83,13 @@
                     // v => /.+@.+/.test(v) || 'Not a valid Email!'
                 ],
                 // stayLoggedIn: false,
-                loading: false
+                loading: false,
+                fbLoading: false
             }
         },
         methods: {
             async submit() {
                 this.loading = true
-                this.$toast.show('Logging in...', {icon: 'hourglass_empty', duration: 500})
                 try {
                         const response = await strapi.login(this.email, this.password)
                         this.setUser(response.user)
@@ -101,7 +104,7 @@
                         this.loading = false
                         this.$toast.error(err.message || 'An error occurred.', {
                             icon: 'error',
-                            duration: 30000,
+                            duration: 5000,
                             action : {
                                 text : 'Close',
                                 onClick : (e, toastObject) => {
@@ -111,10 +114,10 @@
                         })
                     }
                 },
-                ...mapMutations({
-                        setUser: 'auth/setUser',
-                        setToken: 'auth/setToken'
-                    })
+            ...mapMutations({
+                    setUser: 'auth/setUser',
+                    setToken: 'auth/setToken'
+                })
             }
         }
 </script>
