@@ -30,6 +30,12 @@ module.exports = {
     height: '2px'
   },
   /*
+  ** Customize app manifest
+  */
+  manifest: {
+    theme_color: '#D50000'
+  },
+  /*
   ** Global CSS
   */
   css: [
@@ -41,7 +47,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/vuetify'
+    '@/plugins/vuetify',
+    '~/plugins/socket.io.js'
   ],
 
   /*
