@@ -23,6 +23,8 @@
                         <v-btn
                             :input-value="active"
                             icon
+                            outline
+                            active-class="red red--text text--darken-4"
                             @click="toggle"
                         >
                             <v-icon>fiber_manual_record</v-icon>
@@ -45,7 +47,7 @@
                                     <strong class="title">Title {{ n }}</strong>
                                     <v-spacer></v-spacer>
                                     <v-btn icon>
-                                        <v-icon>mdi-account</v-icon>
+                                        <v-icon>account_circle</v-icon>
                                     </v-btn>
                                 </v-layout>
                                 <p>

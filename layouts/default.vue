@@ -13,6 +13,7 @@
           router
           exact
           ripple
+          active-class="red--text"
         >
           <v-list-tile-action>
             <v-icon color='#D50000'>store</v-icon>
@@ -21,6 +22,8 @@
             <v-list-tile-title>Home</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+
+        <v-divider></v-divider>
         
         <v-list-group>
           <v-list-tile slot='activator'>
@@ -36,12 +39,15 @@
           </v-list-tile>
         </v-list-group>
 
+        <v-divider></v-divider>
+
         <v-list-tile
         v-if="user"
           to='/profile'
           router
           exact
           ripple
+          active-class="red--text"
         >
           <v-list-tile-action>
             <v-icon color='#D50000'>person</v-icon>
@@ -51,12 +57,15 @@
           </v-list-tile-content>
         </v-list-tile>
 
+        <v-divider v-if="user"></v-divider>
+
         <v-list-tile
         v-if="!user"
           to='/login'
           router
           exact
           ripple
+          active-class="red--text"
         >
           <v-list-tile-action>
             <v-icon color='#D50000'>account_circle</v-icon>
@@ -66,6 +75,7 @@
           </v-list-tile-content>
         </v-list-tile>
 
+        <v-divider v-if="!user"></v-divider>
 
         <v-list-tile
           v-if="user"
@@ -73,6 +83,7 @@
           router
           exact
           ripple
+          active-class="red--text"
         >
           <v-list-tile-action>
             <v-icon color='#D50000'>create</v-icon>
@@ -82,11 +93,14 @@
           </v-list-tile-content>
         </v-list-tile>
 
+        <v-divider v-if="user"></v-divider>
+
         <v-list-tile
           to='/about'
           router
           exact
           ripple
+          active-class="red--text"
         >
           <v-list-tile-action>
             <v-icon color='#D50000'>info</v-icon>
@@ -96,11 +110,14 @@
           </v-list-tile-content>
         </v-list-tile>
 
+        <v-divider></v-divider>
+
         <v-list-tile
           to='/contact'
           router
           exact
           ripple
+          active-class="red--text"
         >
           <v-list-tile-action>
             <v-icon color='#D50000'>forum</v-icon>
@@ -109,6 +126,8 @@
             <v-list-tile-title>Contact</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+
+        <v-divider></v-divider>
 
         <v-list-tile
         v-if="user"
@@ -122,6 +141,8 @@
             <v-list-tile-title>Logout</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+
+        <v-divider v-if="user"></v-divider>
 
         <v-list-tile>
           <v-list-tile-action>

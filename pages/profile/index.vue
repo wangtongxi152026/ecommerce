@@ -5,11 +5,14 @@
                 <v-flex text-xs-center>
                     <v-badge overlap color='white'>
                         <v-icon dark color='#D50000' size='3em' slot='badge'>verified_user</v-icon>
-                        <v-avatar
-                        size='250'
-                        >
-                            <img :src="'http://localhost:1337' + avatar.url" :alt="user.username">
-                        </v-avatar>
+                        <v-card hover class='pa-1' style='border-radius: 15px;' color='#D50000'>
+                            <v-avatar
+                            tile
+                            size='250'
+                            >
+                                <img style='border-radius: 15px;' :src="'http://localhost:1337' + avatar.url" :alt="user.username">
+                            </v-avatar>
+                        </v-card>
                     </v-badge>
                 </v-flex>
                 <v-flex text-xs-center>
