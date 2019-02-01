@@ -1,4 +1,5 @@
 const pkg = require('./package')
+require('dotenv').config()
 
 module.exports = {
   mode: 'universal',
@@ -55,10 +56,24 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
     '@nuxtjs/pwa', 
     '@nuxtjs/toast',
-    '@nuxtjs/component-cache'
+    '@nuxtjs/component-cache',
+    '@nuxtjs/dotenv'
   ],
+  /*
+  ** Axios settings
+  */
+  axios: {
+    baseURL: process.env.API_URL || 'http://localhost:1337'
+  },
+  /*
+  ** Environment Settings
+  */
+  env: {
+    SOCKET_HOST_URL: process.env.SOCKET_HOST_URL || 'http://localhost:1337'
+  },
   /*
   ** Page Routing Transition
   */

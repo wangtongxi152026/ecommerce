@@ -198,7 +198,6 @@
     import Strapi from 'strapi-sdk-javascript/build/main'
     const apiUrl = process.env.API_URL || 'http://localhost:1337'
     const strapi = new Strapi(apiUrl)
-    import axios from 'axios'
     import { mapMutations } from 'vuex'
     export default {
         head: {
@@ -303,7 +302,7 @@
                     const user_type = this.userType
                     this.$store.commit('auth/updateUserType', user_type)
                     // const user_typeResponse = await strapi.request('put', '/users/' + this.login_res.user._id, { headers: {Authorization: `Bearer ${this.login_res.jwt}`}, user_type})
-                    const user_typeResponse = await axios.put('http://localhost:1337/users/' + this.login_res.user._id, { headers: {Authorization: `Bearer ${this.login_res.jwt}`}, userType: user_type})
+                    const user_typeResponse = await this.$axios.put('/users/' + this.login_res.user._id, { headers: {Authorization: `Bearer ${this.login_res.jwt}`}, userType: user_type})
                     this.$toast.success('Successfully logged in. Please, finish registration...', 
                     {
                         icon: 'lock_open',
@@ -335,7 +334,7 @@
                     image_object.append('ref', 'user')
                     image_object.append('source', 'users-permissions')
                     image_object.append('field', 'avatar')
-                    const uploadResponse = await axios(
+                    const uploadResponse = await this.$axios(
                         { 
                             async: true, 
                             crossDomain: true,

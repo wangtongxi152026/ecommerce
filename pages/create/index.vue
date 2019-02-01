@@ -205,7 +205,6 @@
     import Strapi from 'strapi-sdk-javascript/build/main'
     const apiUrl = process.env.API_URL || 'http://localhost:1337'
     const strapi = new Strapi(apiUrl)
-    import axios from 'axios'
     export default {
         head: {
             title: 'Al-Dokkaan - Create Item',
@@ -302,7 +301,7 @@
                 try{
                     this.loading = true
                     const itemData = { name: this.selectedProductName, user: this.user, category: this.subCat, products: this.selectedProductId, additional_information: this.additionalInfo, amount: this.amount, price: this.price  }
-                    const entityResponse = await axios.post('http://localhost:1337/items/', { headers: { Authorization: `Bearer ${this.token}`}, ...itemData })
+                    const entityResponse = await this.$axios.post('/items/', { headers: { Authorization: `Bearer ${this.token}`}, ...itemData })
                     this.$toast.show(`Successfully created entity`, 
                     {
                         icon: 'done_all',
@@ -328,7 +327,7 @@
                     image_object.append('files', this.image)
                     image_object.append('ref', 'item')
                     image_object.append('field', 'image')
-                    const uploadResponse = await axios(
+                    const uploadResponse = await this.$axios(
                         { 
                             async: true, 
                             crossDomain: true,
