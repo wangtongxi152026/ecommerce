@@ -17,7 +17,7 @@
                         label="Username or E-mail"
                         prepend-icon="person"
                         required
-                        color='#00BCD4'
+                        color='secondary'
                         type="text"
                         ></v-text-field>
                     </v-flex>
@@ -30,7 +30,7 @@
                         label="Password"
                         prepend-icon="lock"
                         required
-                        color='#00BCD4'
+                        color='secondary'
                         type="password"
                         ></v-text-field>
                     </v-flex>

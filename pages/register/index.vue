@@ -7,7 +7,7 @@
             </v-stepper-step>
             <v-stepper-content step="1">
                 <v-form ref='form' lazy-validation @submit.stop.prevent='registerUsingCredentials'>
-                    <v-card class="mb-5 pa-5" flat>
+                    <v-card class="mb-5 px-2 py-5" flat>
                         <v-layout row>
                             <v-flex xs12 sm6 offset-sm3>
                                 <v-text-field
@@ -16,7 +16,7 @@
                                 label="Username"
                                 prepend-icon="person"
                                 required
-                                color='#00BCD4'
+                                color='orange'
                                 type="text"
                                 ></v-text-field>
                             </v-flex>
@@ -29,7 +29,7 @@
                                 label="E-mail"
                                 prepend-icon="alternate_email"
                                 required
-                                color='#00BCD4'
+                                color='orange'
                                 type="text"
                                 ></v-text-field>
                             </v-flex>
@@ -42,7 +42,7 @@
                                 label="Password"
                                 prepend-icon="lock"
                                 required
-                                color='#00BCD4'
+                                color='orange'
                                 type="password"
                                 ></v-text-field>
                             </v-flex>
@@ -102,7 +102,7 @@
                                     <span class="title font-weight-light">Wholesaler</span>
                                 </v-card-title>
                                 <v-card-text>
-                                    Sell at large quantities to either consumers or to companies & other retailers 
+                                    Sell at large quantities to either consumers or to companies & other retailers
                                 </v-card-text>
                                 <v-card-actions>
                                     <v-radio color='#D50000' label="Wholesaler" value="Wholesaler"></v-radio>
@@ -246,7 +246,7 @@
                         this.email,
                         this.password
                     )
-                    this.$toast.success('Registration successfull! Logging in...', 
+                    this.$toast.success('Registration successfull! Logging in...',
                     {
                         icon: 'how_to_reg',
                         duration: 1000
@@ -275,7 +275,7 @@
                     this.login_res = loginResponse
                     this.setUser(loginResponse.user)
                     this.setToken(loginResponse.jwt)
-                    this.$toast.success('Successfully logged in. Please, finish registration...', 
+                    this.$toast.success('Successfully logged in. Please, finish registration...',
                     {
                         icon: 'lock_open',
                         duration: 2000
@@ -303,7 +303,7 @@
                     this.$store.commit('auth/updateUserType', user_type)
                     // const user_typeResponse = await strapi.request('put', '/users/' + this.login_res.user._id, { headers: {Authorization: `Bearer ${this.login_res.jwt}`}, user_type})
                     const user_typeResponse = await this.$axios.put('/users/' + this.login_res.user._id, { headers: {Authorization: `Bearer ${this.login_res.jwt}`}, userType: user_type})
-                    this.$toast.success('Successfully logged in. Please, finish registration...', 
+                    this.$toast.success('Successfully logged in. Please, finish registration...',
                     {
                         icon: 'lock_open',
                         duration: 2000
@@ -335,8 +335,8 @@
                     image_object.append('source', 'users-permissions')
                     image_object.append('field', 'avatar')
                     const uploadResponse = await this.$axios(
-                        { 
-                            async: true, 
+                        {
+                            async: true,
                             crossDomain: true,
                             processData: false,
                             contentType: false,
@@ -349,7 +349,7 @@
                             data: image_object
                         }
                     )
-                    this.$toast.success('Successfully uploaded picture!', 
+                    this.$toast.success('Successfully uploaded picture!',
                     {
                         icon: 'done',
                         duration: 2000
