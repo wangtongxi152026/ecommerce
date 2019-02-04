@@ -24,7 +24,7 @@
         </v-list-tile>
 
         <v-divider></v-divider>
-        
+
         <v-list-group>
           <v-list-tile slot='activator'>
             <v-list-tile-action>
@@ -144,7 +144,7 @@
 
         <v-divider v-if="user"></v-divider>
 
-        <v-list-tile>
+        <v-list-tile class='mt-3'>
           <v-list-tile-action>
             <v-switch
             label="Dark Mode"
@@ -163,6 +163,13 @@
     >
       <v-toolbar-side-icon @click="drawer = !drawer" aria-label='Open Drawer' />
       <v-toolbar-title>{{ title }}</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <nuxt-link to='/messages' class='mr-3' v-if='user'>
+        <v-badge v-model='badgeProps.show' overlap left color="#D50000">
+          <span slot="badge">{{ badgeProps.value }}</span> <!--slot can be any component-->
+          <v-icon color='green' large @click='badgeProps.show = false'>chat</v-icon>
+        </v-badge>
+      </nuxt-link>
     </v-toolbar>
     <v-content>
       <v-container>
@@ -180,12 +187,17 @@
 
 <script>
   import { mapMutations } from 'vuex'
+  import socket from '~/plugins/socket.io'
   export default {
     data() {
       return {
         clipped: true,
         drawer: false,
         dark: false,
+        badgeProps: {
+          show: true,
+          value: 8
+        },
         title: 'Al-Dokkaan',
         categories: [
           'Smartphones', 'Desktops', 'Laptops', 'Shirts', 'Pants', 'Shoes'
@@ -202,12 +214,13 @@
           logout: 'auth/logout'
         }),
         logoutUser() {
-          this.$toast.success('Successfully logged out.', 
+          this.$toast.success('Successfully logged out.',
           {
               icon: 'done',
               duration: 2000
           })
           this.$router.push('/')
+          socket.emit('user:logout', this.user.username)
           return this.logout()
         }
     }

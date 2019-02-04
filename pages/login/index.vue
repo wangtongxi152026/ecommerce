@@ -39,16 +39,16 @@
                 color='red'
                 label='Keep me logged in'
                 v-model='stayLoggedIn'></v-checkbox> -->
-                <v-layout row>
+                <v-layout mt-4 row>
                     <v-flex xs12 sm6 offset-sm3 text-xs-center>
                         <span>New Here?
-                            <v-btn class='white--text' value='Register' aria-label='Go to the registration' hover raised color='secondary' to='/register'>
+                            <v-btn class='white--text' value='Register' aria-label='Go to the registration' hover raised color='blue' to='/register'>
                                 Register
                             </v-btn>
                         </span>
                         <v-spacer></v-spacer>
-                        <v-btn class='white--text' color='#3b5998' :loading='fbLoading' large hover ripple href='http://localhost:1337/connect/facebook'><v-icon>account_circle</v-icon></v-btn>
-                        <v-btn color='#D50000' :loading='loading' class='white--text' aria-label='Press to login!' large hover ripple value='Login' type="submit">Login</v-btn>
+                        <!-- <v-btn class='white--text' color='#3b5998' :loading='fbLoading' large hover ripple href='http://localhost:1337/connect/facebook'><v-icon>account_circle</v-icon></v-btn> -->
+                        <v-btn color='#D50000' :loading='loading' class='white--text' aria-label='Press to login!' block large hover ripple value='Login' type="submit">Login</v-btn>
                     </v-flex>
                 </v-layout>
             </v-card>
@@ -92,10 +92,11 @@
                 this.loading = true
                 try {
                         const response = await strapi.login(this.email, this.password)
+                        socket.emit('user:login',{name: response.user.username, id: response.user._id})
                         this.setUser(response.user)
                         this.setToken(response.jwt)
                         this.$router.go(-1)
-                        this.$toast.success('Successfully logged in!', 
+                        this.$toast.success('Successfully logged in!',
                         {
                             icon: 'lock_open',
                             duration: 2000

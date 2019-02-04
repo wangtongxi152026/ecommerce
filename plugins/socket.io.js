@@ -1,5 +1,5 @@
-import io from 'socket.io-client'
+import io from "socket.io-client";
 
-const socket = io(process.env.SOCKET_HOST_URL) // Change to process.env.SOCKET_HOST_URL in future
+const socket = io(process.env.SOCKET_HOST_URL); // Change to process.env.SOCKET_HOST_URL in future
 
-export default socket
+export default socket;
