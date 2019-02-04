@@ -13,7 +13,7 @@
           router
           exact
           ripple
-          active-class="red--text"
+          active-class="secondary--text"
         >
           <v-list-tile-action>
             <v-icon color='#D50000'>store</v-icon>
@@ -30,9 +30,9 @@
             <v-list-tile-action>
               <v-icon color='#D50000'>view_list</v-icon>
             </v-list-tile-action>
-            <v-list-tile-title>Categories</v-list-tile-title>
+            <v-list-tile-title>Category</v-list-tile-title>
           </v-list-tile>
-          <v-list-tile active-class="red--text" v-for="(cat, index) in categories" :key="index" :to='"/category/" + cat'>
+          <v-list-tile active-class="secondary--text" v-for="(cat, index) in categories" :key="index" :to='"/category/" + cat'>
             <v-list-tile-content class='ml-3 pl-3'>
               <v-list-tile-title>{{ cat }}</v-list-tile-title>
             </v-list-tile-content>
@@ -47,7 +47,7 @@
           router
           exact
           ripple
-          active-class="red--text"
+          active-class="secondary--text"
         >
           <v-list-tile-action>
             <v-icon color='#D50000'>person</v-icon>
@@ -65,7 +65,7 @@
           router
           exact
           ripple
-          active-class="red--text"
+          active-class="secondary--text"
         >
           <v-list-tile-action>
             <v-icon color='#D50000'>account_circle</v-icon>
@@ -83,7 +83,7 @@
           router
           exact
           ripple
-          active-class="red--text"
+          active-class="secondary--text"
         >
           <v-list-tile-action>
             <v-icon color='#D50000'>create</v-icon>
@@ -100,7 +100,7 @@
           router
           exact
           ripple
-          active-class="red--text"
+          active-class="secondary--text"
         >
           <v-list-tile-action>
             <v-icon color='#D50000'>info</v-icon>
@@ -117,7 +117,7 @@
           router
           exact
           ripple
-          active-class="red--text"
+          active-class="secondary--text"
         >
           <v-list-tile-action>
             <v-icon color='#D50000'>forum</v-icon>
@@ -167,7 +167,7 @@
       <nuxt-link to='/messages' class='mr-3' v-if='user'>
         <v-badge v-model='badgeProps.show' overlap left color="#D50000">
           <span slot="badge">{{ badgeProps.value }}</span> <!--slot can be any component-->
-          <v-icon color='green' large @click='badgeProps.show = false'>chat</v-icon>
+          <v-icon color='secondary' large @click='badgeProps.show = false'>chat</v-icon>
         </v-badge>
       </nuxt-link>
     </v-toolbar>
@@ -227,3 +227,8 @@
   }
 </script>
 
+<style>
+html, body {
+  scroll-behavior: smooth;
+}
+</style>

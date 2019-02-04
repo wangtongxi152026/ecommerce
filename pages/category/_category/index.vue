@@ -5,12 +5,12 @@
                     <v-card-title primary-title>
                         <h1>Oops! No items yet :(</h1>
                         <v-spacer></v-spacer>
-                        <v-btn class='white--text' color='#D50000' to='/create'>Create Advertisement <v-icon>create</v-icon></v-btn>
+                        <v-btn class='white--text' color='secondary' to='/create'>Create Advertisement <v-icon>create</v-icon></v-btn>
                     </v-card-title>
                 </v-card>
             <v-layout row wrap v-else>
                 <v-flex v-for="(item, index) in itemsList" :key='index' xs12 sm6 md4 lg3>
-                    <v-card hover>
+                    <v-card style='border-radius: 15px;' hover raised>
                         <v-card-media>
                             <v-img
                             :src='"http://localhost:1337" + item.image.url'
@@ -24,21 +24,21 @@
                                 justify-center
                                 ma-0
                                 >
-                                    <v-progress-circular indeterminate color="#D50000"></v-progress-circular>
+                                    <v-progress-circular indeterminate color="secondary"></v-progress-circular>
                                 </v-layout>
                             </v-img>
                         </v-card-media>
                         <v-card-title class='headline font-weight-bold' primary-title>
                             {{ item.name }}
                         </v-card-title>
-                        <v-divider class='mx-5' color="#D50000"></v-divider>
+                        <!-- <v-divider class='mx-5' color="#D50000"></v-divider> -->
                         <v-card-text>
                             Amount: {{ item.amount }} <br>Price: {{ item.price }}
                         </v-card-text>
                         <v-card-actions>
                             <v-spacer></v-spacer>
                             <nuxt-link style='text-decoration:none;' :to='`/user/${item.user.username}`'>
-                                <v-chip  color="#D50000" text-color="white">
+                                <v-chip  color="secondary" text-color="white">
                                     <v-avatar>
                                         <v-icon color='white'>account_circle</v-icon>
                                     </v-avatar>
@@ -46,7 +46,7 @@
                                 </v-chip>
                             </nuxt-link>
                             <v-spacer></v-spacer>
-                            <!-- <v-btn class='white--text' round ripple color="#D50000" :to='"/category/item/" + item._id'>View</v-btn> -->
+                            <!-- <v-btn class='white--text' round ripple color="secondary" :to='"/category/item/" + item._id'>View</v-btn> -->
                         </v-card-actions>
                     </v-card>
                 </v-flex>

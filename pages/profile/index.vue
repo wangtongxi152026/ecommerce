@@ -27,7 +27,7 @@
                         width="15"
                         max='10'
                         :value="user.rating * 10"
-                        color="#D50000"
+                        color="secondary"
                         >
                         <h1>{{ user.rating }}</h1>
                         </v-progress-circular>
@@ -76,7 +76,7 @@
             avatar() {
                 return this.$store.getters['images/avatar'].user.avatar
             }
-            
+
         },
         async fetch({ store }) {
             store.commit('images/removeAvatar')

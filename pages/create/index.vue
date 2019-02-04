@@ -7,7 +7,7 @@
             </v-stepper-step>
             <v-stepper-content step="1">
                 <v-form @submit.stop.prevent='getProducts'>
-                    <v-card class='mb-5' flat>
+                    <v-card class='transparent mb-5' flat>
                         <v-layout row>
                             <v-flex xs12 sm6 offset-sm3>
                                 <v-radio-group row v-model='category'>
@@ -25,7 +25,6 @@
                             <v-flex xs12 sm6 offset-sm3>
                                 <v-autocomplete
                                 v-model="subCat"
-                                :rules='categoryRules'
                                 color='#D50000'
                                 box
                                 autofocus
@@ -40,6 +39,7 @@
                             </v-flex>
                         </v-layout>
                         <v-card-actions>
+							<v-spacer></v-spacer>
                             <v-btn class='white--text' large ripple hover color='#D50000' type='submit' :loading='loading'>Search!</v-btn>
                         </v-card-actions>
                     </v-card>
@@ -69,7 +69,7 @@
                                 ma-0
                                 >
                                     <v-progress-circular indeterminate color="#D50000"></v-progress-circular>
-                                </v-layout> 
+                                </v-layout>
                             </v-card-media>
                             <v-card-text>
                                 Release Date: {{ pr.product_year }}
@@ -77,7 +77,7 @@
                             <v-card-actions>
                                 <v-btn  style='border-radius: 15px;' class='white--text' block color="#D50000" :loading='loading' @click='selectedItem(pr._id, pr.product_name)'>Select</v-btn>
                             </v-card-actions>
-                        </v-card> 
+                        </v-card>
                     </v-flex>
                 </v-layout>
             </v-stepper-content>
@@ -86,7 +86,7 @@
                 <small>Supply us with more info to display your item correctly</small>
             </v-stepper-step>
             <v-stepper-content step="3">
-                <v-card flat>
+                <v-card class='transparent' flat>
                     <v-layout row>
                         <v-flex xs12 sm6 offset-sm3>
                             <v-textarea
@@ -172,12 +172,11 @@
                 </v-card>
                 <v-btn class='white--text' color="#D50000" large @click="uploadImage(entity_id)" v-if='image'>Proceed</v-btn>
             </v-stepper-content>
-            
+
             <v-stepper-step color='#D50000' step="5">Congratulations!</v-stepper-step>
             <v-stepper-content step="5">
-                <v-card class="mb-5" flat>
-                    You are done creating an item!!
-                    <v-card-actions>
+                <v-card class="mb-5 transparent" flat>
+                    <v-card-actions class='justify-center'>
                         <v-btn class='white--text' large color='#D50000' :to='"/category/" + subCat'>Check your item!</v-btn>
                     </v-card-actions>
                 </v-card>
@@ -269,7 +268,7 @@
                     })
                     this.products = productsResponse.data.products
                     this.loading = false
-                    this.$toast.show(`${this.subCat}`, 
+                    this.$toast.show(`${this.subCat}`,
                     {
                         icon: 'label',
                         duration: 1500
@@ -277,7 +276,7 @@
                     this.e5 = 2
                 } catch(err) {
                     this.loading = false
-                    this.$toast.error(err.message || 'Failed to load products!', 
+                    this.$toast.error(err.message || 'Failed to load products!',
                     {
                         icon: 'error',
                         duration: 1500
@@ -302,7 +301,7 @@
                     this.loading = true
                     const itemData = { name: this.selectedProductName, user: this.user, category: this.subCat, products: this.selectedProductId, additional_information: this.additionalInfo, amount: this.amount, price: this.price  }
                     const entityResponse = await this.$axios.post('/items/', { headers: { Authorization: `Bearer ${this.token}`}, ...itemData })
-                    this.$toast.show(`Successfully created entity`, 
+                    this.$toast.show(`Successfully created entity`,
                     {
                         icon: 'done_all',
                         duration: 1500
@@ -311,7 +310,7 @@
                     this.e5 = 4
                     this.loading = false
                 } catch(err) {
-                    this.$toast.error(err.message || 'Failed to create entity!', 
+                    this.$toast.error(err.message || 'Failed to create entity!',
                     {
                         icon: 'error',
                         duration: 1500
@@ -328,8 +327,8 @@
                     image_object.append('ref', 'item')
                     image_object.append('field', 'image')
                     const uploadResponse = await this.$axios(
-                        { 
-                            async: true, 
+                        {
+                            async: true,
                             crossDomain: true,
                             processData: false,
                             contentType: false,
@@ -342,7 +341,7 @@
                             data: image_object
                         }
                     )
-                    this.$toast.success('Successfully uploaded picture!', 
+                    this.$toast.success('Successfully uploaded picture!',
                     {
                         icon: 'done',
                         duration: 2000

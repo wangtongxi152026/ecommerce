@@ -41,6 +41,7 @@ export default {
 	background-position-x: right;
 	background-position-y: bottom;
 	background-repeat: no-repeat;
+	/* background by SVGBackgrounds.com */
 }
 </style>
 
